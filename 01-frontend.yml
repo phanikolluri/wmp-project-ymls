@@ -1,0 +1,9 @@
+- name:  Install frontend configuration
+  hosts: all
+  become: yes
+  tasks:
+    - name: install nginx
+  
+      ansible.builtin.dnf:
+        name: '@postgresql:9.6'
+        state: present  
