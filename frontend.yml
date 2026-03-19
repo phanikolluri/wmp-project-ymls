@@ -17,10 +17,7 @@
         src: nginx.conf
         dest: /etc/nginx/nginx.conf
 
-    - name: Remove nginx default
-      ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: absent
+
 
     - name: Unarchive a file that needs to be downloaded
       ansible.builtin.unarchive:
