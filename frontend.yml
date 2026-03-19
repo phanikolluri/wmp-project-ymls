@@ -8,7 +8,7 @@
     - name: install nginx
       ansible.builtin.dnf:
         name:
-          - '@nginx:1.2'
+          - '@nginx:1.26'
           - nodejs
         state: present
 
