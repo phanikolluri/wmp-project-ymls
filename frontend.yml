@@ -17,7 +17,10 @@
         src: nginx.conf
         dest: /etc/nginx/nginx.conf
 
-
+    - name: Delete directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: absent
 
     - name: Unarchive a file that needs to be downloaded
       ansible.builtin.unarchive:
@@ -25,7 +28,7 @@
         dest: /usr/share/nginx
         remote_src: yes
 
-    - name: install depenencies and build
+    - name: install dependencies and build
       ansible.builtin.shell: npm ci ; npm run build ; mv dist html
       args:
         chdir: /usr/share/nginx
