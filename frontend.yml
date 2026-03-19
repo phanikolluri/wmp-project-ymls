@@ -12,20 +12,26 @@
           - nodejs
         state: present
 
-    - name: Unarchive a file that needs to be downloaded
-      ansible.builtin.unarchive:
-        src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/frontend.tar.gz
-        dest: /usr/share/nginx
-
-    - name: install depenencies and build
-      ansible.builtin.shell: npm ci; npm run build; mv dist html
-      args:
-        chdir: /usr/share/nginx
-
     - name: Copy nginx configuration file
       ansible.builtin.copy:
         src: nginx.conf
         dest: /etc/nginx/nginx.conf
+
+    - name: Remove nginx default
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: absent
+
+    - name: Unarchive a file that needs to be downloaded
+      ansible.builtin.unarchive:
+        src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/frontend.tar.gz
+        dest: /usr/share/nginx
+        remote_src: yes
+
+    - name: install depenencies and build
+      ansible.builtin.shell: npm ci ; npm run build ; mv dist html
+      args:
+        chdir: /usr/share/nginx
 
     - name: Start service nginx
       ansible.builtin.service:
