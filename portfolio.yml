@@ -32,14 +32,12 @@
         mode: '0755'
 
     - name: build the application
-      ansible.builtin.shell: ./gradlew bootJar --no-daemon -x test
+      ansible.builtin.shell: chmod +x gradlew && ./gradlew bootJar --no-daemon -x test
       args:
         chdir: /app
 
     - name: copy the build bootJar
-      ansible.builtin.shell: chmod +x gradlew &&; cp /app/build/libs/*.jar /app/portfolio-service.jar
-      args:
-        chdir: /app
+      ansible.builtin.shell: cp /app/build/libs/*.jar /app/portfolio-service.jar
 
     - name: Set ownership and permissions on /app
       ansible.builtin.file:
