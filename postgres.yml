@@ -20,6 +20,7 @@
 
     - name: Initialise and start postgres
       ansible.builtin.shell: /usr/pgsql-16/bin/postgresql-16-setup initdb
+      ignore_errors: yes
 
     - name: Configure the network access
       ansible.builtin.replace:
