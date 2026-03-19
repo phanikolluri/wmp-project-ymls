@@ -15,7 +15,7 @@
     - name: Unarchive a file that needs to be downloaded
       ansible.builtin.unarchive:
         src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/frontend.tar.gz
-        dest: /usr/share/nginx
+        dest: /usr/local/nginx
         remote_src: yes
 
     - name: install depenencies and build
