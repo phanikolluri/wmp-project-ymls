@@ -36,7 +36,6 @@
       ansible.builtin.copy:
         src: auth-service.service
         dest: /etc/systemd/system/auth-service.service
-        remote_src: yes
 
     - name: Start service auth-service
       ansible.builtin.service:
