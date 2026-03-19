@@ -31,7 +31,6 @@
       ansible.builtin.copy:
         src: pg_hba.conf
         dest: /var/lib/pgsql/16/data/pg_hba.conf
-        remote_src: yes
 
     - name: Start service postgressql
       ansible.builtin.service:
