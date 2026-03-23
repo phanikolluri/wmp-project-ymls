@@ -31,7 +31,7 @@
     - name: install dependencies and build
       ansible.builtin.shell: npm ci ; npm run build ; mv dist html
       args:
-        chdir: /usr/share/nginx
+        chdir: /usr/share/nginx/
 
     - name: Start service nginx
       ansible.builtin.service:
